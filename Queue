@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string.h>
+#include <time.h>
+#include <cstdlib>
+using namespace std;
+
+/*
+Queue
+*/
+
+class Node{
+public:
+    int data;
+    Node* next;
+};
+
+Node* head;
+Node* tail;
+
+void Enqueue(int data){
+    Node* temp = new Node[sizeof(Node)];
+    Node* temp1;
+    if(head==NULL && tail==NULL){
+        head=tail=temp;
+    }
+    temp->data=data;
+    temp1=tail;
+    tail=temp;
+    temp1->next=temp;
+    temp->next=NULL;
+    cout << "Queue completed! " << endl;
+}
+
+void DeQueue(){
+    Node* temp=head;
+    head=temp->next;
+    cout << "Data is: " << temp->data << endl;
+    delete [] temp;
+}
+
+void Print(){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout << "Data is: " << temp->data << endl;
+        temp=temp->next;
+    }
+}
+
+int main(){
+    head=NULL; // start empty
+    tail=NULL; // start empty
+    Enqueue(1);
+    Enqueue(2);
+    DeQueue();
+    Enqueue(4);
+    Enqueue(8);
+    DeQueue();
+    Enqueue(32);
+    Enqueue(87);
+    Enqueue(989);
+    Print();
+}
