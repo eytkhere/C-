@@ -1,0 +1,58 @@
+#include <iostream>
+
+using namespace std;
+
+/*
+Reverse Linked List
+*/
+
+class Node{
+public:
+    int data;
+    Node* next;
+};
+
+Node* head;
+
+void Insert(int data){
+    Node* temp=new Node[sizeof(Node)];
+    temp->data=data;
+    temp->next=head;
+    head=temp;
+}
+
+void Reverse(){
+    Node* prev=NULL;
+    Node* curr=head;
+    Node* forw;
+    while(curr!=NULL){
+        forw=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=forw;
+    }
+    head=prev;
+    cout << "DONE reversing!" << endl;
+}
+
+void Print(){
+    Node* forw=head;
+    while(forw!=NULL){
+        cout << forw->data << endl;
+        forw=forw->next;
+    }
+}
+
+int main()
+{
+    head=NULL; // start with empty list
+    Insert(123);
+    Insert(567);
+    Insert(901);
+    Insert(345);
+    Insert(789);
+    Insert(321);
+    Print();
+    Reverse();
+    Print();
+}
