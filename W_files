@@ -1,0 +1,10 @@
+int main(){
+    ofstream ofile{"**DIRECT LINK**"};
+    if(ofile){
+        vector<string> words = {"The", "blue", "whale", "is", "found"};
+        for(auto words : words){
+            ofile<<words<<", ";
+        }
+        ofile.close();
+    }
+}
