@@ -1,0 +1,11 @@
+int main(){
+    ifstream ifile{"**DIRECT LINK"};
+    if(ifile){
+        string text{""};
+        while(ifile>>text){
+            cout<<text<<", ";
+        }
+        cout<<endl;
+        ifile.close();
+    }
+}
